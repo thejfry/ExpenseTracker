@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f5f0">
+    <title>Jeffrey &amp; Lauren’s Money Review</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Jeffrey and Lauren’s Money Review home">
+          <span class="brand-mark" aria-hidden="true">J&amp;L</span>
+          <span>Jeffrey &amp; Lauren’s Money Review</span>
+        </a>
+        <div class="privacy-note"><span class="privacy-dot"></span>Private by design <span class="privacy-divider">·</span> Your data stays on this device</div>
+        <button class="button button-quiet print-button" id="print-report" type="button" disabled>Export PDF <span aria-hidden="true">↗</span></button>
+      </header>
+
+      <main>
+        <section class="intro">
+          <div class="eyebrow">HOUSEHOLD MONEY, IN PERSPECTIVE</div>
+          <h1>See where your money<br class="desktop-break"> is really going.</h1>
+          <p>A thoughtful look at your spending patterns, month by month. No budgets or judgment—just a clearer picture of the life you’re building.</p>
+        </section>
+
+        <section class="upload-card" id="upload-card" aria-labelledby="upload-title">
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="upload-copy">
+            <h2 id="upload-title">Start with your monthly export</h2>
+            <p>Choose your budgeting app’s category summary CSV. It’s read locally and never leaves your browser.</p>
+            <div class="upload-actions">
+              <button class="button button-primary" id="choose-file" type="button">Choose a CSV file</button>
+              <span>or drop it here</span>
+              <input id="csv-file" type="file" accept=".csv,text/csv" hidden>
+            </div>
+          </div>
+          <div class="upload-format">CATEGORY SUMMARY <span>·</span> CSV</div>
+        </section>
+        <div class="status-message" id="status-message" role="alert" hidden></div>
+
+        <section class="report" id="report" hidden>
+          <div class="report-heading">
+            <div>
+              <div class="eyebrow">YOUR MONTHLY REPORT <span class="heading-divider">/</span> <span id="report-period"></span></div>
+              <h2>A little more clarity.</h2>
+            </div>
+            <button class="button button-outline upload-another" id="upload-another" type="button">Upload another</button>
+          </div>
+
+          <div class="metric-grid" id="metric-grid"></div>
+
+          <section class="panel trend-panel">
+            <div class="panel-heading">
+              <div><div class="eyebrow">THE BIG PICTURE</div><h3>Monthly cash flow</h3></div>
+              <span class="panel-caption">Income minus expenses</span>
+            </div>
+            <div class="chart-wrap" id="cash-flow-chart"></div>
+          </section>
+
+          <section class="insights-section">
+            <div class="section-heading">
+              <div><div class="eyebrow">WHAT CHANGED</div><h3>Worth a closer look</h3></div>
+              <p>Recent three months compared with the three before.</p>
+            </div>
+            <div class="insight-grid" id="insight-grid"></div>
+          </section>
+
+          <section class="panel categories-panel">
+            <div class="panel-heading category-heading">
+              <div><div class="eyebrow">EVERY CATEGORY, AT A GLANCE</div><h3>Monthly spending</h3></div>
+              <label class="sensitivity-control" for="sensitivity">
+                <span>Flag months above recent average by</span>
+                <select id="sensitivity" aria-label="Alert sensitivity">
+                  <option value="15">15%</option>
+                  <option value="25" selected>25%</option>
+                  <option value="40">40%</option>
+                  <option value="60">60%</option>
+                </select>
+              </label>
+            </div>
+            <p class="category-note">Increases are observations, not judgments. Single-month flags compare a month with that category’s recent three-month average; sustained changes compare three-month periods.</p>
+            <div class="category-list" id="category-list"></div>
+          </section>
+          <footer class="report-footer">Made for conversations, not scorecards. <span id="report-currency">CAD · $</span></footer>
+        </section>
+      </main>
+      <footer class="site-footer">Your financial data is processed locally in this browser. Refresh or close this page to clear it.</footer>
+    </div>
+  </body>
+</html>
